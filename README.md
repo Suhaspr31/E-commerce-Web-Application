@@ -1,7 +1,5 @@
 # 🛒 E-Commerce Spring Boot (JSP + Hibernate)
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square&logo=github-actions&labelColor=1a1a2e)](https://github.com/Suhaspr31/E-commerce-Web-Application)
-
 A production-ready, robust Java E-Commerce web application built on the **Spring Boot** framework, employing **Hibernate ORM (SessionFactory)** for data persistence, **Spring Security** for role-based access control, and **JSP (JavaServer Pages) + JSTL** for the dynamic web view layer.
 
 ---
@@ -281,9 +279,6 @@ If navigating to web views produces plain text or throws a **404 Not Found** for
 
 ---
 
-## 📽️ Demo & Screenshots
-
-- **Preview Video Guide:** [Watch E-commerce Spring Boot Walkthrough](https://youtu.be/c6WWdINWSlI)
 
 <div align="center">
   <sub>Built as a college project · Maintained with ❤️</sub>
