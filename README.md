@@ -1,232 +1,291 @@
-<a href="https://trendshift.io/repositories/151" target="_blank"><img src="https://trendshift.io/api/badge/repositories/151" alt="jaygajera17%2FE-commerce-project-springBoot | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+# 🛒 E-Commerce Spring Boot (JSP + Hibernate)
 
-# E-commerce Spring Boot (JSP + Hibernate)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square&logo=github-actions&labelColor=1a1a2e)](https://github.com/Suhaspr31/E-commerce-Web-Application)
 
-Production-oriented Java e-commerce web application built with Spring Boot, JSP, Spring Security, and Hibernate SessionFactory.
+A production-ready, robust Java E-Commerce web application built on the **Spring Boot** framework, employing **Hibernate ORM (SessionFactory)** for data persistence, **Spring Security** for role-based access control, and **JSP (JavaServer Pages) + JSTL** for the dynamic web view layer.
 
-This project follows a layered MVC architecture and supports role-based access for admin and customer workflows.
+---
 
-<br/><br/>
+## 📖 Table of Contents
+1. [Key Features & Highlights](#-key-features--highlights)
+2. [Detailed Tech Stack](#-detailed-tech-stack)
+3. [System Architecture & Design Patterns](#-system-architecture--design-patterns)
+4. [Database Schema & Entity Relationships](#-database-schema--entity-relationships)
+5. [Security & Authentication Architecture](#-security--authentication-architecture)
+6. [MVC Controller & Endpoint Mapping](#-mvc-controller--endpoint-mapping)
+7. [Getting Started & Installation](#-getting-started--installation)
+8. [CI/CD Pipeline Details](#-cicd-pipeline-details)
+9. [Troubleshooting & Core Configurations](#-troubleshooting--core-configurations)
 
-<h1>🛒 E-Commerce Spring Boot</h1>
- 
-<p>A production-oriented Java e-commerce web application built with Spring Boot, JSP, Spring Security, and Hibernate — featuring role-based access for admin and customer workflows.</p>
-<br/>
-<!-- Badges Row 1: Community -->
-<p>
-  <a href="https://github.com/jaygajera17/E-commerce-project-springBoot/stargazers">
-    <img src="https://img.shields.io/github/stars/jaygajera17/E-commerce-project-springBoot?style=flat-square&logo=github&labelColor=1a1a2e&color=f5a623&label=Stars" alt="Stars"/>
-  </a>
-  <a href="https://github.com/jaygajera17/E-commerce-project-springBoot/network/members">
-    <img src="https://img.shields.io/github/forks/jaygajera17/E-commerce-project-springBoot?style=flat-square&logo=github&labelColor=1a1a2e&color=4a90d9&label=Forks" alt="Forks"/>
-  </a>
-  <a href="https://github.com/jaygajera17/E-commerce-project-springBoot/issues">
-    <img src="https://img.shields.io/github/issues/jaygajera17/E-commerce-project-springBoot?style=flat-square&logo=github&labelColor=1a1a2e&color=e05c5c&label=Issues" alt="Issues"/>
-  </a>
-  <a href="https://github.com/jaygajera17/E-commerce-project-springBoot/pulls">
-    <img src="https://img.shields.io/github/issues-pr/jaygajera17/E-commerce-project-springBoot?style=flat-square&logo=github&labelColor=1a1a2e&color=8e44ad&label=Pull+Requests" alt="Pull Requests"/>
-  </a>
-  <a href="https://github.com/jaygajera17/E-commerce-project-springBoot/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/jaygajera17/E-commerce-project-springBoot?style=flat-square&logo=github&labelColor=1a1a2e&color=27ae60&label=Contributors" alt="Contributors"/>
-  </a>
-</p>
+---
 
-<br/>
+## 🌟 Key Features & Highlights
 
-## Highlights
+- **Multi-Role User Portals:** Separate, secure experiences for **Administrators** and **Customers**.
+- **Admin Dashboard:** Control panels to manage the product inventory, categorize products, and audit registered customers.
+- **Custom Hibernate Configuration:** Leverages a programmatically defined `LocalSessionFactoryBean` (Hibernate SessionFactory) instead of standard Spring Data JPA, ensuring fine-grained session control.
+- **Dynamic Password Migration:** Legacy plain-text passwords seeded in the database are automatically upgraded to BCrypt hashed representations upon user login or lookup.
+- **Spring Security Configuration:** Dual-security filter chains configured to separate user-facing routes from administrative portals.
+- **Continuous Integration Ready:** Built-in Jenkins pipeline configuration to automate testing, compilation, and packaging.
 
-- Server-rendered e-commerce app (JSP views)
-- Spring Security authentication and role-based authorization
-- Custom Hibernate SessionFactory configuration (non-Spring-Data JPA runtime)
-- MySQL-backed persistence with DAO and service layers
-- Admin modules for products, categories, and customer listing
-- User modules for registration, login, profile management, and product browsing
-- Jenkins pipeline file included for CI/CD bootstrap
+---
 
-## Tech Stack
+## 🛠️ Detailed Tech Stack
 
-<p>
-  <img src="https://img.shields.io/badge/Java-11-ED8B00?style=flat-square&logo=openjdk&logoColor=white&labelColor=1a1a2e" alt="Java 11"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-2.6.4-6DB33F?style=flat-square&logo=springboot&logoColor=white&labelColor=1a1a2e" alt="Spring Boot"/>
-  <img src="https://img.shields.io/badge/Spring%20Security-5.x-6DB33F?style=flat-square&logo=springsecurity&logoColor=white&labelColor=1a1a2e" alt="Spring Security"/>
-  <img src="https://img.shields.io/badge/Hibernate-ORM-59666C?style=flat-square&logo=hibernate&logoColor=white&labelColor=1a1a2e" alt="Hibernate"/>
-  <img src="https://img.shields.io/badge/MySQL-8.x-4479A1?style=flat-square&logo=mysql&logoColor=white&labelColor=1a1a2e" alt="MySQL"/>
-  <img src="https://img.shields.io/badge/Maven-Build-C71A36?style=flat-square&logo=apachemaven&logoColor=white&labelColor=1a1a2e" alt="Maven"/>
-</p>
+| Technology | Version | Description |
+|---|---|---|
+| **Java Development Kit (JDK)** | `11` | Core runtime platform. |
+| **Spring Boot** | `2.6.4` | Application core container and MVC framework. |
+| **Spring Security** | `5.6.x` | Role-based authorization & authentication. |
+| **Hibernate ORM** | `5.6.x` | Custom SessionFactory-based persistence provider. |
+| **Database Engine** | **MySQL `8.x`** | Relational Database Management System. |
+| **View Template Engine** | **JSP + JSTL** | Server-side template rendering engine. |
+| **Servlet Container** | **Tomcat Jasper** | Embed engine to compile and render JSP files. |
+| **Build Automation** | **Maven** | Dependency management and packaging build system. |
 
-- Java 11
-- Spring Boot 2.6.4
-- Spring MVC
-- Spring Security
-- Hibernate ORM (via `LocalSessionFactoryBean`)
-- JSP + JSTL + Tomcat Jasper
-- MySQL 8 connector
-- Maven
+---
 
-## Project Structure
+## 🏗️ System Architecture & Design Patterns
 
-```text
+The project is structured around a classic **layered MVC (Model-View-Controller)** architecture to enforce clear separation of concerns (SoC):
+
+```
 src/main/java/com/jtspringproject/JtSpringProject/
-  configuration/     # Security config
-  controller/        # MVC controllers
-  dao/               # Data access layer
-  models/            # Entities
-  services/          # Business layer
-  repository/        # Spring Data repository (partial)
-  HibernateConfiguration.java
-  JtSpringProjectApplication.java
-src/main/resources/
-  application.properties
-src/main/webapp/views/
-  *.jsp
-basedata.sql
-pom.xml
+├── configuration/              # Spring Security and Cryptographic Configurations
+│   ├── PasswordEncoderConfig.java
+│   └── SecurityConfiguration.java
+├── controller/                 # MVC Controllers handling Request-Response mapping
+│   ├── AdminController.java
+│   ├── UserController.java
+│   └── ErrorController.java
+├── services/                   # Business Logic Layer exposing transactional operations
+│   ├── userService.java
+│   ├── productService.java
+│   ├── categoryService.java
+│   └── cartService.java
+├── dao/                        # Data Access Object Layer executing Hibernate queries
+│   ├── userDao.java
+│   ├── productDao.java
+│   ├── categoryDao.java
+│   ├── cartDao.java
+│   └── cartProductDao.java
+├── models/                     # JPA/Hibernate Entities mapping MySQL tables
+│   ├── User.java
+│   ├── Category.java
+│   ├── Product.java
+│   ├── Cart.java
+│   ├── CartProduct.java
+│   └── CartProductId.java
+└── HibernateConfiguration.java # Bootstrapping SessionFactory and Datasource Beans
 ```
 
-## Getting Started
+### 🧩 Core Architectural Components
 
-### Prerequisites
+1. **Custom Hibernate Integration (`HibernateConfiguration.java`):**
+   Exposes a programmatically configured `LocalSessionFactoryBean` using environment variables. Transaction management is handled by `HibernateTransactionManager` bound to the SessionFactory.
+2. **DAO Layer:**
+   Unlike standard JpaRepository interfaces, the DAOs inject the custom Hibernate `SessionFactory` and query the database using active sessions:
+   ```java
+   this.sessionFactory.getCurrentSession().createQuery("from CART", Cart.class).list();
+   ```
+3. **Service Layer:**
+   Encapsulates transaction-aware business workflows (e.g., category operations, inventory updates, and cryptographic checks).
+4. **View Layer (`/src/main/webapp/views/`):**
+   Utilizes JavaServer Pages (JSP) and JSP Standard Tag Library (JSTL) to compile views dynamically.
 
-- Java 11+
-- Maven 3.8+
-- MySQL or MariaDB
+---
 
-### 1) Clone and move into project
+## 🗄️ Database Schema & Entity Relationships
 
+The relational model contains five tables mapping users, products, and shopping carts.
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ PRODUCT : "selects/lists"
+    CUSTOMER ||--o{ CART : "owns"
+    CATEGORY ||--o{ PRODUCT : "classifies"
+    CART ||--o{ CART_PRODUCT : "contains"
+    PRODUCT ||--o{ CART_PRODUCT : "added_to"
+
+    CUSTOMER {
+        int id PK "AUTO_INCREMENT"
+        varchar username UK "Unique Username"
+        varchar email "User Email"
+        varchar password "BCrypt Hash"
+        varchar role "ROLE_ADMIN / ROLE_NORMAL"
+        varchar address "Shipping Address"
+    }
+
+    CATEGORY {
+        int category_id PK "AUTO_INCREMENT"
+        varchar name "Category Name"
+    }
+
+    PRODUCT {
+        int product_id PK "AUTO_INCREMENT"
+        varchar name "Product Title"
+        varchar image "Image URL Link"
+        int price "Cost of product"
+        int quantity "Available stock count"
+        int weight "Product weight in grams"
+        int category_id FK "References CATEGORY(category_id)"
+        int customer_id FK "References CUSTOMER(id)"
+    }
+
+    CART {
+        int id PK "AUTO_INCREMENT"
+        int customer_id FK "References CUSTOMER(id)"
+    }
+
+    CART_PRODUCT {
+        int cart_id PK, FK "Composite Key Part 1"
+        int product_id PK, FK "Composite Key Part 2"
+    }
+```
+
+### 📝 Database Schema Seeding (`basedata.sql`)
+The default schema initializes a database named `ecommjava` and seeds:
+- **Default Category Set:** Fruits, Vegetables, Meat, Fish, Dairy, Bakery, Drinks, Sweets, and Other.
+- **Administrative Account:** `admin` (Password: `123`, Role: `ROLE_ADMIN`)
+- **Customer Account:** `lisa` (Password: `765`, Role: `ROLE_NORMAL`)
+
+---
+
+## 🔐 Security & Authentication Architecture
+
+Authentication is powered by **Spring Security**, utilizing custom multi-layer filter chains.
+
+### 🛡️ Dual Filter Chain Setup
+1. **Admin Chain (`Order(1)`):**
+   - Applies exclusively to `/admin/**` routes.
+   - The login endpoint is `/admin/login` and processing URL is `/admin/loginvalidate`.
+   - Restricts access strictly to accounts containing the `ADMIN` role.
+2. **User Chain (`Order(2)`):**
+   - Applies to the rest of the application (`/**`).
+   - Public paths `/login`, `/register`, and `/newuserregister` are permitted.
+   - All other routes require authentication under `ROLE_USER`.
+
+### 🔄 Dynamic Password Migration (Legacy Integration)
+To bridge the gap between seeded plain-text credentials and the modern standard `BCryptPasswordEncoder`, a dynamic migration process is implemented within `userService.java`:
+
+```java
+public User getUserByUsername(String username) {
+    User user = userDao.getUserByUsername(username);
+    if (user != null && user.getPassword() != null && !isPasswordEncoded(user.getPassword())) {
+        // Dynamic legacy password migration to BCrypt on-load
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userDao.saveUser(user);
+    }
+    return user;
+}
+```
+Whenever a legacy user logs in, their password prefix is inspected. If it lacks a valid BCrypt signature (`$2a$`, `$2b$`, `$2y$`), it is instantly encrypted and saved back to the database.
+
+---
+
+## 🛣️ MVC Controller & Endpoint Mapping
+
+| Endpoint Pattern | HTTP Method | Authorized Role | View Resolved | Controller / Purpose |
+|---|---|---|---|---|
+| **Public / Auth Routes** | | | | |
+| `/login` | `GET` | PermitAll | `userLogin.jsp` | Renders user login portal. |
+| `/register` | `GET` | PermitAll | `register.jsp` | Renders user registration form. |
+| `/newuserregister` | `POST` | PermitAll | `userLogin.jsp` / `register.jsp` | Creates user account with `ROLE_NORMAL`. |
+| `/logout` | `GET` | User / Admin | Redirect to `/login` | Invalidates active user session. |
+| **Customer Area** | | | | |
+| `/` | `GET` | `USER` | `index.jsp` | Customer home page displaying products. |
+| `/user/products` | `GET` | `USER` | `uproduct.jsp` | Product gallery available for purchase. |
+| `/profileDisplay` | `GET` | `USER` | `updateProfile.jsp` | Display profile settings. |
+| `/updateuser` | `POST` | `USER` | Redirect to `/` | Persists changes and updates active principal context. |
+| `/buy` | `GET` | `USER` | `buy.jsp` | Mock checkout / billing layout. |
+| **Admin Area** | | | | |
+| `/admin/login` | `GET` | PermitAll | `adminlogin.jsp` | Admin login portal. |
+| `/admin/` or `Dashboard`| `GET` | `ADMIN` | `adminHome.jsp` | Admin landing page. |
+| `/admin/categories` | `GET` | `ADMIN` | `categories.jsp` | Displays available inventory categories. |
+| `/admin/categories` | `POST` | `ADMIN` | Redirect to categories | Adds a new product category. |
+| `/admin/categories/delete` | `POST` | `ADMIN` | Redirect to categories | Deletes category by ID. |
+| `/admin/categories/update` | `POST` | `ADMIN` | Redirect to categories | Modifies category name. |
+| `/admin/products` | `GET` | `ADMIN` | `products.jsp` | Lists all products in the catalog. |
+| `/admin/products/add` | `GET` | `ADMIN` | `productsAdd.jsp` | Renders form to add a product. |
+| `/admin/products/add` | `POST` | `ADMIN` | Redirect to products | Persists new product model. |
+| `/admin/products/update/{id}` | `GET` | `ADMIN` | `productsUpdate.jsp` | Renders edit page for a specific product. |
+| `/admin/products/update/{id}` | `POST` | `ADMIN` | Redirect to products | Updates product parameters. |
+| `/admin/products/delete` | `POST` | `ADMIN` | Redirect to products | Removes product from DB. |
+| `/admin/customers` | `GET` | `ADMIN` | `displayCustomers.jsp` | Audits all registered customers. |
+
+> [!NOTE]
+> **Cart Subsystem Status:** The `Cart`, `CartProduct`, and `CartProductId` entities along with their repository-level classes are fully implemented in Java. However, user-facing routes (such as adding items to cart and checking out) are currently decoupled from MVC mappings, representing a workspace candidate for future full frontend integrations. Legacy scriptlets containing raw JDBC connections reside inside `cartproduct.jsp`.
+
+---
+
+## 🚀 Getting Started & Installation
+
+### 📋 Prerequisites
+- **Java Development Kit (JDK) 11+** installed and set on environment path.
+- **Apache Maven 3.8+** installed.
+- **MySQL 8.x Server** instance running locally.
+
+### 1) Initialize the Database
+Log into your MySQL instance and source the database setup file:
 ```bash
-git clone https://github.com/jaygajera17/E-commerce-project-springBoot.git
-cd E-commerce-project-springBoot
+mysql -u root -p < basedata.sql
 ```
+This script creates the `ecommjava` schema, creates tables, and populates the default records.
 
-### 2) Configure database
-
-Update `src/main/resources/application.properties`:
-
+### 2) Database Connection Profile
+Verify and customize connections inside `src/main/resources/application.properties`:
 ```properties
 db.driver=com.mysql.cj.jdbc.Driver
 db.url=jdbc:mysql://localhost:3306/ecommjava?createDatabaseIfNotExist=true
-db.username=your_db_user
-db.password=your_db_password
-
-hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
-hibernate.show_sql=true
-hibernate.hbm2ddl.auto=update
-entitymanager.packagesToScan=com
+db.username=YOUR_MYSQL_USERNAME  # Default: root
+db.password=YOUR_MYSQL_PASSWORD  # Default: empty
 ```
 
-### 3) Optional: seed sample data
-
-Run `basedata.sql` against your database if you want initial categories/users/products.
-
-Note: sample credentials in `basedata.sql` are development-only defaults.
-
-### 4) Run the app
+### 3) Compiling and Executing
+Execute the build cycles using Maven:
 
 ```bash
+# Clean workspace and compile dependencies
 mvn clean package
+
+# Start the Spring Boot Web application
 mvn spring-boot:run
 ```
 
-App URL: http://localhost:8080/
+Once running, navigate to **`http://localhost:8080`** on your browser.
 
-## IDE Notes (IntelliJ)
+---
 
-If JSP views are not resolved, set the run configuration working directory to `$MODULE_WORKING_DIR$`.
+## 🔄 CI/CD Pipeline Details
 
-## Core Endpoints
+The project comes with a predefined configuration file (`jenkins file`) for CI/CD setup in Jenkins:
 
-### Public/User
+- **Checkout:** Pulls the latest commits from the repository's `main` branch.
+- **Build:** Compiles source components via `mvn clean package`.
+- **Test:** Runs JUnit 5 lifecycle validations via `mvn test`.
+- **Deploy:** Placeholder shell commands to automate build delivery.
 
-- `/`
-- `/login`
-- `/register`
-- `/newuserregister`
-- `/user/products`
-- `/profileDisplay`
+---
 
-### Admin
+## 🔧 Troubleshooting & Core Configurations
 
-- `/admin/`
-- `/admin/Dashboard`
-- `/admin/products`
-- `/admin/categories`
-- `/admin/customers`
+### 1) IntelliJ / Eclipse JSP Rendering Error
+If navigating to web views produces plain text or throws a **404 Not Found** for pages located inside `/views/`:
+- Edit your IDE Run Configuration.
+- Locate **Working Directory** and explicitly configure it to use the project root directory (`$MODULE_WORKING_DIR$`). Without this, the embed Tomcat compiler fails to resolve the context paths.
 
-## Security Model
+### 2) Database Connection Timeouts on Boot
+- Verify that your MySQL server is running.
+- Ensure the schema name `ecommjava` matches the URL string.
+- If using MySQL 8+, make sure your timezone configuration is aligned, or append `&serverTimezone=UTC` to the database URL.
 
-- Admin routes under `/admin/**` require role `ADMIN`
-- User routes require role `USER`
-- Login pages:
-  - Admin: `/admin/login`
-  - User: `/login`
-- CSRF protection is enabled for form submissions
+---
 
-## Build and Test
+## 📽️ Demo & Screenshots
 
-```bash
-mvn clean verify
-```
-
-Notes:
-
-- `mvn test` requires a reachable database because context startup initializes Hibernate and datasource beans.
-
-## CI/CD
-
-A Jenkins pipeline is included in `jenkins file` with stages for:
-
-- Checkout
-- Build
-- Test
-- Deploy (template placeholder)
-
-Adjust branch, deployment steps, and credentials for your environment.
-
-## Troubleshooting
-
-- `Could not resolve placeholder 'db.driver'`:
-  - Ensure all `db.*` keys exist in `application.properties`
-- JSP pages not rendering:
-  - Verify working directory and `spring.mvc.view.prefix=/views/`
-- Tests failing on startup:
-  - Start MySQL and verify connection credentials first
-
-## Screenshots
-
-![Preview 1](https://github.com/jaygajera17/E-commerce-project-springBoot/assets/81226571/02a04d3c-1fc9-418c-b231-639f6525d07e)
-![Preview 2](https://github.com/jaygajera17/E-commerce-project-springBoot/assets/81226571/24c4451b-43a6-4c23-a78a-786eab4303b0)
-![Preview 3](https://github.com/jaygajera17/E-commerce-project-springBoot/assets/81226571/93c1baeb-326c-450f-867e-a883900a6644)
-
-## Roadmap
-
-See the full roadmap in [roadmap.md](roadmap.md).
-
-Current priorities:
-
-- Solid foundation: CI, Docker Compose, contribution workflow, and test coverage.
-- Complete e-commerce domain: cart, checkout, auth, search, and API docs.
-- Industry patterns: caching, concurrency control, observability, and scalability.
-- Long-term architecture: event-driven patterns and microservice decomposition guide.
-
-## Demo
-
-demo video: https://youtu.be/c6WWdINWSlI
-
-## ⭐ Support This Project
-
-If this project helped you, please consider giving it a star on GitHub.
-Your support helps improve visibility and motivates future maintenance.
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=jaygajera17%2FE-commerce-project-springBoot&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=jaygajera17/E-commerce-project-springBoot&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=jaygajera17/E-commerce-project-springBoot&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=jaygajera17/E-commerce-project-springBoot&type=date&legend=top-left" />
- </picture>
-</a>
+- **Preview Video Guide:** [Watch E-commerce Spring Boot Walkthrough](https://youtu.be/c6WWdINWSlI)
 
 <div align="center">
-  <sub>Built as a college project · Grown into a community resource · Maintained with ❤️</sub>
+  <sub>Built as a college project · Maintained with ❤️</sub>
 </div>
+
